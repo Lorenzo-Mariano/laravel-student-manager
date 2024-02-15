@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\CssSelector\Node\FunctionNode;
+use App\Http\Controllers\InformationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,17 @@ use Symfony\Component\CssSelector\Node\FunctionNode;
 |
 */
 
+
+// VIEWS
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('information.create-student');
 });
 
-Route::get('/testing', function () {
-    return view('testing');
-});
+
+
+// CRUD OPS TO DA DB
+
+Route::get('/information/create', [InformationController::class, 'create'])->name('information.create');
+// Route::get('/information/crapper', [InformationController::class, 'crapper'])->name('information.crapper');
+Route::post('/information/store', [InformationController::class, 'store'])->name('information.store');
