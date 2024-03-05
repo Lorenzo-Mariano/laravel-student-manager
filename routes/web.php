@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\CssSelector\Node\FunctionNode;
 use App\Http\Controllers\InformationController;
-
+use App\Models\Information;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +19,28 @@ use App\Http\Controllers\InformationController;
 
 // VIEWS
 
-Route::get('/', function () {
-    return view('information.create-student');
-});
+Route::get(
+    '/create-student',
+    function () {
+        return view('information.create-student');
+    }
+);
 
-Route::get('/students', function () {
-    return view('information.show-students');
-});
+Route::get(
+    '/',
+    function () {
+        return view('information.show-students');
+    }
+);
 
-
+Route::get(
+    '/update-students/{id}',
+    [InformationController::class, 'showForm']
+);
 
 // CRUD OPS TO DA DB
 
 Route::get('/information/create', [InformationController::class, 'create'])->name('information.create');
 Route::post('/information/store', [InformationController::class, 'store'])->name('information.store');
-Route::delete('/information/delete/{id}', [InformationController::class, 'deleteStudent'])->name('information.deleteStudent');
-
-// Route::get('/information/crapper', [InformationController::class, 'crapper'])->name('information.crapper');
+Route::delete('/information/delete/{id}', [InformationController::class, 'deleteStudent']);
+Route::put('/information/update/{id}', [InformationController::class, 'updateStudent']);

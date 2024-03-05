@@ -13,10 +13,11 @@ class InformationController extends Controller
         return view('information.create-student');
     }
 
-    // public function crapper()
-    // {
-    //     return view('testing');
-    // }
+    public function showForm($id)
+    {
+        $student = Information::findOrFail($id);
+        return view('information.update-student', compact('student'));
+    }
 
     public function store(Request $request)
     {
@@ -28,7 +29,6 @@ class InformationController extends Controller
             'age' => 'required|integer|min:6|max:60',
             // might need to be more specific
             'contact_number' => 'required|numeric',
-            // turns out we dont need this lol
             // but nice to keep for future reference
             // 'email' => 'required|email|unique:information,email',
             'address' => 'required|string',
@@ -38,15 +38,15 @@ class InformationController extends Controller
         ]);
 
         Information::create($validatedData);
+        return redirect('/');
 
+        // or 
         // return redirect('/')->with('success', 'Information has been added ');
-        return redirect('/students');
-
-        // or like this
+        // or
         // return redirect()->route('create-student', ['status' => 'Student data entry successfully created.']);
     }
 
-    public function updateStudent(Request $request)
+    public function updateStudent(Request $request, $id)
     {
         $validatedData = $request->validate([
             'first_name' => 'required|string',
@@ -54,24 +54,15 @@ class InformationController extends Controller
             'middle_name' => 'required|string',
             'year_section' => 'required|string',
             'age' => 'required|integer|min:6|max:60',
-            // might need to be more specific
             'contact_number' => 'required|numeric',
-            // turns out we dont need this lol
-            // but nice to keep for future reference
-            // 'email' => 'required|email|unique:information,email',
             'address' => 'required|string',
             'mother_name' => 'required|string',
             'father_name' => 'required|string',
             'gender' => 'required|string|in:male,female',
         ]);
 
-        Information::create($validatedData);
-
-        // return redirect('/')->with('success', 'Information has been added ');
-        return redirect('/students');
-
-        // or like this
-        // return redirect()->route('create-student', ['status' => 'Student data entry successfully created.']);
+        Information::where('id', $id)->update($validatedData);
+        return redirect('/');
     }
 
     public function showAllStudents()
@@ -83,6 +74,9 @@ class InformationController extends Controller
     public function deleteStudent($id)
     {
         Information::findOrFail($id)->delete();
-        return view('information.show-students');
+        return redirect('/');
+
+        // below keeps the URL unchanged, but showing the proper view
+        // return view('information.show-students');
     }
 }
