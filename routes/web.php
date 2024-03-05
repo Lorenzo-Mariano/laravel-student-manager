@@ -23,10 +23,16 @@ Route::get('/', function () {
     return view('information.create-student');
 });
 
+Route::get('/students', function () {
+    return view('information.show-students');
+});
+
 
 
 // CRUD OPS TO DA DB
 
 Route::get('/information/create', [InformationController::class, 'create'])->name('information.create');
-// Route::get('/information/crapper', [InformationController::class, 'crapper'])->name('information.crapper');
 Route::post('/information/store', [InformationController::class, 'store'])->name('information.store');
+Route::delete('/information/delete/{id}', [InformationController::class, 'deleteStudent'])->name('information.deleteStudent');
+
+// Route::get('/information/crapper', [InformationController::class, 'crapper'])->name('information.crapper');

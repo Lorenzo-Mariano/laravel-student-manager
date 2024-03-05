@@ -19,6 +19,11 @@
             box-shadow: #00000040 0px 14px 28px, #00000038 0px 10px 10px;
         }
 
+        .buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
         .errors-wrapper {
             margin-bottom: 1rem;
             color: rgb(255, 133, 133);
@@ -60,6 +65,7 @@
         <input type="text" id="year_section" name="year_section"><br>
 
         <label for="age">Age:</label><br>
+        {{-- might be better to not have max and min to make laravel show error instead --}}
         {{-- <input type="number" id="age" name="age" min="0" max="99"><br> --}}
         <input type="number" id="age" name="age"><br>
 
@@ -81,7 +87,10 @@
             <option value="female">Female</option>
         </select><br><br>
 
-        <button type="submit">Submit</button>
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <a href="/students">To Students Page</a>
+        </div>
     </form>
 </body>
 
