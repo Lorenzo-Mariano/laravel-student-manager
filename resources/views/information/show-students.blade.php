@@ -10,17 +10,20 @@
         .table-wrapper {
             width: min-content;
             margin: 0 auto;
+            margin-bottom: 1rem;
         }
 
         table {
             border-collapse: collapse;
-            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            box-shadow: rgba(17, 12, 46, 0.26) 0px 48px 100px 0px;
         }
 
         td,
         th {
             border: 1px solid #000;
-            padding: 0.5rem;
+            padding: 0.75rem;
+
+            border: none;
         }
 
         th {

@@ -17,6 +17,7 @@
             padding: 1rem;
             background-color: #fff;
             box-shadow: #00000040 0px 14px 28px, #00000038 0px 10px 10px;
+            margin-bottom: 2rem;
         }
 
         .buttons {
