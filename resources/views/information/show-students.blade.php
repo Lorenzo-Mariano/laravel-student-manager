@@ -115,8 +115,8 @@
     @endforeach
     </table>
     </div>
-
     @endif
+
 </body>
 
 </html>

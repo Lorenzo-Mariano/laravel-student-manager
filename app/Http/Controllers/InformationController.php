@@ -27,10 +27,7 @@ class InformationController extends Controller
             'middle_name' => 'required|string',
             'year_section' => 'required|string',
             'age' => 'required|integer|min:6|max:60',
-            // might need to be more specific
             'contact_number' => 'required|numeric',
-            // but nice to keep for future reference
-            // 'email' => 'required|email|unique:information,email',
             'address' => 'required|string',
             'mother_name' => 'required|string',
             'father_name' => 'required|string',
@@ -39,11 +36,6 @@ class InformationController extends Controller
 
         Information::create($validatedData);
         return redirect('/');
-
-        // or 
-        // return redirect('/')->with('success', 'Information has been added ');
-        // or
-        // return redirect()->route('create-student', ['status' => 'Student data entry successfully created.']);
     }
 
     public function updateStudent(Request $request, $id)
@@ -75,8 +67,5 @@ class InformationController extends Controller
     {
         Information::findOrFail($id)->delete();
         return redirect('/');
-
-        // below keeps the URL unchanged, but showing the proper view
-        // return view('information.show-students');
     }
 }

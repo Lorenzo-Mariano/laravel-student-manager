@@ -36,7 +36,6 @@
     <h1>Update Student</h1>
     <h2>Selected student ID: {{ $student->id }}</h2>
 
-    {{-- action should point to update in controller --}}
     <form action="/information/update/{{ $student->id }}" method="POST">
         @csrf
         @method('PUT')

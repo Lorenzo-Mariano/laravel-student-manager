@@ -35,7 +35,6 @@
     <h1>Create Student</h1>
 
     <form action="{{ route('information.store') }}" method="POST">
-        {{-- <form action="{{ route('information.crapper') }}" method="GET"> --}}
         @csrf
 
         <div>
